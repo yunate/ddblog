@@ -1,0 +1,63 @@
+---
+import * as globals from '../../globals.js';
+---
+
+<!-- favicon -->
+<link rel="icon" type="image/ico" href={globals.favIconPath} >
+
+<!-- sitemap -->
+<link rel="sitemap" href="/sitemap-index.xml">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="title" content={globals.blogName}>
+<meta name="author" content={globals.blogName}>
+<meta name="description" content={globals.description}>
+<meta name="keywords" content=`${globals.blogName},编程,生活`>
+
+<!-- 网站分析 -->
+<script data-goatcounter="https://yunate.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<!-- Security -->
+<meta http-equiv="Content-Security-Policy" content="
+    default-src
+      'self'
+      'unsafe-inline';
+    script-src-elem
+      https://cdn.skypack.dev
+      https://www.googletagmanager.com
+      https://pagead2.googlesyndication.com/
+      https://hm.baidu.com/
+      https://gc.zgo.at/
+      https://giscus.app/
+      'unsafe-inline'
+      'self';
+    frame-src
+      https://*;
+    connect-src
+      https://www.google-analytics.com
+      https://hm.baidu.com/
+      https://ep1.adtrafficquality.google/
+      'self';
+    style-src
+      https://giscus.app/
+      'unsafe-inline'
+      'self';
+">
+
+<!-- 开放图谱标签 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content={globals.blogName}>
+<meta property="og:description" content={globals.description}>
+<meta property="og:url" content={globals.siteUrl}>
+<meta property="og:image" content=`${globals.siteUrl}/${globals.favWebpPath}`>
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content={globals.blogName}>
+<meta property="twitter:description" content={globals.description}>
+<meta property="twitter:url" content={globals.siteUrl}>
+<meta property="twitter:image" content=`${globals.siteUrl}/${globals.favWebpPath}`>
+
+<!-- transitions -->
+<meta name="astro-view-transitions-enabled" content="true">
+<meta name="astro-view-transitions-fallback" content="animate">

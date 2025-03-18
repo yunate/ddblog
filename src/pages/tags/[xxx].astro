@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostMenuList from '../../components/PostMenuList.astro';
+import { getAllTags } from '../../Utils';
+
+export async function getStaticPaths() {
+  const tags = await getAllTags();
+
+  return tags.map((tag) => {
+    return {
+      params: { xxx: tag.tag },
+      props: { posts: tag.posts },
+    };
+  });
+}
+
+const { xxx } = Astro.params;
+const { posts } = Astro.props;
+posts.sort((a, b) => {
+  const dateA = a.postInfo.pubDate || new Date(0);
+  const dateB = b.postInfo.pubDate || new Date(0);
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<BaseLayout title={ xxx }>
+  <PostMenuList title={ xxx } posts={posts} />
+</BaseLayout>

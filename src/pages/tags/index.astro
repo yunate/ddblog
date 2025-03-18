@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TagCloud from '../../components/TagCloud.astro';
+import { getAllTags } from '../../Utils';
+const tags = await getAllTags();
+---
+<BaseLayout title="tags">
+  <TagCloud tags={tags} />
+</BaseLayout>
+
+<style>
+  .tagsContainer {
+    margin-top: var(--small-gap);
+    margin-bottom: var(--small-gap);
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--small-gap);
+    row-gap: var(--small-gap);
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+const { date } = Astro.props;
+let dateString = '';
+if (typeof date.toISOString === 'function') {
+  dateString = date.toISOString().slice(0,10);
+} else {
+  dateString = date;
+}
+---
+
+<div class="container">
+  <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24" width="16">
+    <path fill-rule="evenodd" d="M5 5c.6 0 1-.4 1-1a1 1 0 1 1 2 0c0 .6.4 1 1 1h1c.6 0 1-.4 1-1a1 1 0 1 1 2 0c0 .6.4 1 1 1h1c.6 0 1-.4 1-1a1 1 0 1 1 2 0c0 .6.4 1 1 1a2 2 0 0 1 2 2v1c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V7c0-1.1.9-2 2-2ZM3 19v-7c0-.6.4-1 1-1h16c.6 0 1 .4 1 1v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Zm6-6c0-.6-.4-1-1-1a1 1 0 1 0 0 2c.6 0 1-.4 1-1Zm2 0a1 1 0 1 1 2 0c0 .6-.4 1-1 1a1 1 0 0 1-1-1Zm6 0c0-.6-.4-1-1-1a1 1 0 1 0 0 2c.6 0 1-.4 1-1ZM7 17a1 1 0 1 1 2 0c0 .6-.4 1-1 1a1 1 0 0 1-1-1Zm6 0c0-.6-.4-1-1-1a1 1 0 1 0 0 2c.6 0 1-.4 1-1Zm2 0a1 1 0 1 1 2 0c0 .6-.4 1-1 1a1 1 0 0 1-1-1Z" clip-rule="evenodd"></path>
+  </svg>
+  <div class="label">
+    {dateString}
+  </div>
+</div>
+
+<style>
+  .container {
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 16px;
+    font-family: Consolas;
+    font-weight: 500;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: calc(var(--small-gap) * 0.5);
+  }
+
+  .label {
+    color: var(--text-color-hover);
+  }
+</style>

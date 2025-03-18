@@ -1,0 +1,87 @@
+---
+import '../styles/global.css';
+import * as globals from '../../globals.js';
+import TextLink from './TextLink.astro';
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+  <nav>
+    <div class="copyRight">
+      CopyRight &copy; {currentYear} {globals.blogName}. All rights reserved.
+    </div>
+    <ul>
+      <li><TextLink text="关于" openInNewTab url={globals.githubUrl} /></li>
+    </ul>
+  </nav>
+</footer>
+
+<style>
+  footer {
+    background-color: var(--color-bg);
+    height: var(--footer-height);
+    width: 100%;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-width: var(--max-width);
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: var(--small-gap);
+    padding-right: var(--small-gap);
+    border-top: 1px solid var(--color-border);
+    box-sizing: border-box;
+  }
+
+  .copyRight {
+    color: #666;
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    gap: calc(var(--small-gap) * 2);
+    margin: 0px;
+    padding: 0px;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  ul a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+  }
+
+  ul a:hover {
+    color: var(--text-color-hover);
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+    }
+
+    .copyRight {
+      margin-top: var(--small-gap);
+    }
+
+    ul {
+      padding-top: var(--small-gap);
+      padding-bottom: var(--small-gap);
+      align-items: center;
+      gap: var(--small-gap);
+    }
+  }
+</style>

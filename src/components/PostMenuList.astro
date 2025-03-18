@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+import type { BlogPostEntry } from '../Utils';
+
+interface Props {
+  title: string;
+  posts: BlogPostEntry[];
+}
+
+const { title, posts } = Astro.props;
+---
+<div class="post-group">
+  <div class="title">{title}</div>
+  {posts.map(post => (
+    <a class="item" href={`/posts/${post.id}/`}>
+      <div class="label">{post.postInfo.title ?? '未知'}</div>
+      <div class="connector"/>
+      <div class="public-date">{post.postInfo.pubDate?.toISOString().slice(5,10) ?? '未知'}</div>
+    </a>
+  ))}
+</div>
+
+<style>
+  .post-group {
+    margin-top: var(--small-gap);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--small-gap) / 2);
+    color: var(--text-color);
+  }
+
+  .title {
+    font: var(--group-title-font);
+  }
+
+  .item {
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: bold;
+
+    padding-left: calc(var(--small-gap) * 1.5);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--small-gap);
+  }
+
+  .item:hover {
+    color: var(--text-color-hover);
+  }
+
+  .item .label {
+    max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .item .connector{
+    flex:1;
+    box-sizing: border-box;
+    /* border-bottom: 1px dashed var(--color-border); */
+  }
+
+  .item .public-date {
+    flex: 0 0 50px;
+    font-size: 1rem;
+  }
+</style>

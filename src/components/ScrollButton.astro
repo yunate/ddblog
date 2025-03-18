@@ -1,0 +1,80 @@
+---
+import '../styles/global.css';
+---
+<div class="scroll-buttons">
+  <button id="scrollTop" title="回到顶部">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15L12 9L6 15"/>
+    </svg>
+  </button>
+  <button id="scrollBottom" title="到达底部">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 9L12 15L18 9"/>
+    </svg>
+  </button>
+</div>
+
+<style>
+  .scroll-buttons {
+    position: fixed;
+    right: var(--small-gap);
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+    flex-direction: column;
+    gap: calc(var(--small-gap) / 2);
+    z-index: 1000;
+  }
+
+  button {
+    background: var(--color-bg);
+    color: var(--text-color);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  button:hover {
+    color: var(--text-color-hover);
+    background: var(--color-bg-hover);
+  }
+</style>
+
+<script>
+  const scrollButtons = document.querySelector('.scroll-buttons') as HTMLElement;
+  const scrollTopBtn = document.getElementById('scrollTop');
+  const scrollBottomBtn = document.getElementById('scrollBottom');
+
+  function checkScroll() {
+    const scrollable = document.documentElement.scrollHeight > window.innerHeight;
+    if (scrollable) {
+      scrollButtons?.style.setProperty('display', 'flex');
+    } else {
+      scrollButtons?.style.setProperty('display', 'none');
+    }
+  }
+
+  scrollTopBtn?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  scrollBottomBtn?.addEventListener('click', () => {
+    window.scrollTo({ 
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth' 
+    });
+  });
+
+  window.addEventListener('scroll', checkScroll);
+  window.addEventListener('resize', checkScroll);
+
+  // 初始检查
+  checkScroll();
+</script>

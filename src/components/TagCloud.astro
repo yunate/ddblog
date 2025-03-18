@@ -1,0 +1,29 @@
+---
+import Tag from '../components/Tag.astro';
+import type { TagInfo } from '../Utils';
+
+interface Props {
+  tags: TagInfo[];
+}
+const { tags } = Astro.props;
+---
+
+<div class="container">
+  {tags.map((tag) => (
+    <Tag label=`${tag.tag} (${tag.posts.length})` url={`/tags/${tag.tag}`}/>
+  ))}
+</div>
+
+<style>
+  .container {
+    margin-top: var(--small-gap);
+    margin-bottom: var(--small-gap);
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--small-gap);
+    row-gap: var(--small-gap);
+  }
+</style>

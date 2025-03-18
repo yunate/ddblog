@@ -1,16 +1,103 @@
 ---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostMenuList from '../components/PostMenuList.astro';
+import { getAllPosts } from '../Utils.ts';
+import TagCloud from '../components/TagCloud.astro';
+import { getAllTags } from '../Utils';
+import type { BlogPostEntry } from '../Utils.ts';
 
+const allPosts = await getAllPosts();
+const groupedPosts = function getGroupedPosts() {
+  const tmp = new Map<Number, BlogPostEntry[]>();
+  allPosts.forEach(post => {
+    const pubDate = post.postInfo.pubDate?.getFullYear() ?? -1;
+    if (tmp.has(pubDate)) {
+      tmp.get(pubDate)!.push(post);
+    } else {
+      tmp.set(pubDate, [post]);
+    }
+  });
+
+  let return_value = [];
+  for (const [year, posts] of tmp) {
+    const sortedPosts = posts.sort((a, b) => {
+      const dateA = a.postInfo.pubDate || new Date(0);
+      const dateB = b.postInfo.pubDate || new Date(0);
+      return dateB.getTime() - dateA.getTime();
+    });
+    const newKey = `${year !== -1 ? year : "其他"} (${sortedPosts.length})`;
+    return_value.push({newKey, sortedPosts});
+  }
+  return_value.sort((a, b) => {
+    const keyA = a.newKey;
+    const keyB = b.newKey;
+    if (keyA.startsWith("其他")) {
+      return 1;
+    }
+    if (keyB.startsWith("其他")) {
+      return -1;
+    }
+    return keyB.localeCompare(keyA);
+  });
+  return return_value;
+}();
+
+const tags = await getAllTags();
 ---
+<BaseLayout>
+  <div class="container">
+    <div class="left">
+      {groupedPosts.map(({ newKey, sortedPosts }) => (
+        <PostMenuList title={newKey} posts={sortedPosts} />
+      ))}
+    </div>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+    <div class="right">
+      {tags.length > 0 &&
+        <div class="tag-container">
+          <div class="lable">标签云</div>
+          <TagCloud tags={tags} />
+        </div>
+      }
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .left {
+    flex: 1;
+  }
+
+  .right {
+    margin-top: var(--small-gap);
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tag-container{
+    padding-left: calc(var(--small-gap) * 2);
+  }
+
+  .tag-container .lable {
+    font: bold 18px/2rem system-ui;
+    color: var(--text-color-hover);
+  }
+
+  @media (max-width: 768px) {
+  .right {
+    display: none;
+  }
+
+  .left {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+</style>

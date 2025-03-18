@@ -1,0 +1,42 @@
+:root {
+  /* 基础颜色 */
+  --text-color-hover: #0791b2;
+
+  /* 亮色主题（默认） */
+  --color-bg: #ffffff;
+  --color-bg-hover: #f3f4f6;
+  --text-color: #333333;
+  --link-color: #000000;
+  --color-border: #dddddd;
+
+  /* Tag */
+  --tag-bg: #e5e7eb;
+  --tag-bg-hover: #0791b2;
+
+  --header-height: 80px;
+  --footer-height: 3rem;
+  --max-width: 1024px;
+  --min-width: 350px;
+  --small-gap: 1rem;
+
+  --group-title-font: bold 24px/2rem system-ui;
+}
+
+/* 暗色主题 */
+:root.dark {
+  --color-bg: rgba(48, 50, 59, 1);
+  --color-bg-hover: #374151;
+  --link-color: #ffffff;
+  --text-color: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.1);
+
+  /* Tag */
+  --tag-bg: #5c5d5f;
+  --tag-bg-hover: #0791b2;
+}
+
+/* 全局过渡效果 
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+*/
