@@ -1,0 +1,103 @@
+---
+import '../styles/global.css';
+import Tag from '../components/Tag.astro';
+import type { BlogPostEntry } from '../Utils';
+
+interface Props {
+  title: string;
+  posts: BlogPostEntry[];
+}
+
+const { title, posts } = Astro.props;
+---
+<div class="post-group">
+  <div class="title">{title}</div>
+  {posts.map(post => (
+    <div class="item">
+      <a class="link" href={`/posts/${post.id}/`}>
+        <div class="label">{post.postInfo.title ?? '未知'}</div>
+        <div class="connector"/>
+        <div class="public-date">{post.postInfo.pubDate?.toISOString().slice(5,10) ?? '未知'}</div>
+      </a>
+      <div class="tag">
+        {
+          post.postInfo.tags && post.postInfo.tags?.length > 1 &&
+            <Tag label=`${post.postInfo.tags!.at(0)}` url={`/tags/${post.postInfo.tags!.at(0)}`}/>
+        }
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .post-group {
+    margin-top: var(--small-gap);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--small-gap) / 2);
+    color: var(--text-color);
+  }
+
+  .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font: var(--group-title-font);
+    padding-bottom: calc(var(--small-gap) / 2);
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .item .link {
+    flex: 1;
+    min-width: 0;
+
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: bold;
+
+    padding-left: var(--small-gap);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--small-gap);
+  }
+
+  .item .link:hover {
+    color: var(--text-color-hover);
+  }
+
+  .item .label {
+    max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .item .connector{
+    flex:1;
+    box-sizing: border-box;
+  }
+
+  .item .public-date {
+    flex: 0 0 50px;
+    font-size: 1rem;
+  }
+
+  .item .tag {
+    width: 250px;
+    padding-left: var(--small-gap);
+    box-sizing: border-box;
+    display: flex;
+  }
+
+  @media (max-width: 768px) {
+    .item .tag {
+      display: none;
+    }
+  }
+</style>

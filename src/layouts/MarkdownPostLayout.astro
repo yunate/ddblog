@@ -1,0 +1,105 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Date from '../components/Date.astro';
+import Tag from '../components/Tag.astro';
+import Giscus from '../components/Giscus.astro';
+
+const { pageData } = Astro.props;
+const pre = pageData.pre
+const cur = pageData.cur.data;
+const nxt = pageData.nxt;
+---
+<BaseLayout title={ cur.title }>
+  <div class="mdHeader">
+    {cur.title ? <div class="mdTitle">{cur.title}</div> : ''}
+    <div class="tagsContainer">
+      <Date date={cur.pubDate ?? '未知'} />
+      {cur.tags?.map((tag: string) => (
+        <Tag label={tag} url={`/tags/${tag}`} />
+      ))}
+    </div>
+  </div>
+  <div>
+    <slot />
+  </div>
+  <div class="mdFooter">
+    { !pre ? "" :
+      <div class="pageLink" role="link" onclick={`window.location.href='/posts/${pre.id}/'`}>
+        <div class="label">{`上一篇 ${pre.data.title}`}</div>
+      </div>
+    }
+    { !nxt ? "" :
+      <div class="pageLink" role="link" onclick={`window.location.href='/posts/${nxt.id}/'`}>
+        <div class="label">{`下一篇 ${nxt.data.title ?? "未知"}`}</div>
+      </div>
+    }
+  </div>
+  <Giscus path={`/posts/${cur.id}/`} />
+</BaseLayout>
+
+<style>
+  .tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--small-gap);
+    row-gap: var(--small-gap);
+  }
+
+  .mdHeader {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--small-gap) * 1.5);
+    padding-top: calc(var(--small-gap) * 1.5);
+    padding-bottom: calc(var(--small-gap) * 1.5);
+    box-sizing: border-box;
+    border-bottom: 1px dashed var(--color-border);
+  }
+
+  .mdTitle {
+    font-size: 1.5em;
+    font-weight: 600;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mdFooter {
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--small-gap);
+    padding-bottom: var(--small-gap);
+  }
+
+  .pageLink {
+    cursor: pointer;
+    display: flex;
+  }
+
+  .pageLink .label {
+    color: var(--text-color);
+    font-size: 0.9rem;
+
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    padding-bottom: 3px;
+    border-bottom: 2px solid var(--text-color);
+  }
+
+  .pageLink .label:hover {
+    color: var(--text-color-hover);
+    border-bottom: 2px solid var(--text-color-hover);
+    transform: translateY(1px);
+  }
+
+  @media (max-width: 768px) {
+    .mdFooter {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: calc(var(--small-gap) / 2);
+    }
+  }
+</style>

@@ -1,0 +1,7 @@
+# yunate.cn Robots.txt
+# 允许所有机器人扫描并索引整个网站
+User-agent: *
+Allow: /
+
+# 站点地图位置
+Sitemap: https://yunate.cn/sitemap-index.xml

@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+const { text, url, openInNewTab} = Astro.props;
+const { class: className, ...rest } = Astro.props;
+---
+
+<a href={url} target={openInNewTab ? 'blank_' : ''} class=`textLinkDefault ${className}` {...rest}>
+  <slot />
+  <div class="label">{text}</div>
+</a>
+
+<style>
+  .textLinkDefault {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--link-color);
+    text-decoration-line: none;
+  }
+
+  .textLinkDefault:hover {
+    color: var(--text-color-hover);
+    transform: translateY(1px);
+    transition: transform 0.5s ease;
+  }
+
+  .label {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>

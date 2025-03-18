@@ -1,0 +1,29 @@
+---
+const { path } = Astro.props;
+---
+
+<div class="giscus">
+    <!-- https://giscus.app/zh-CN -->
+    <script src="https://giscus.app/client.js"
+      data-repo="yunate/dddiscussions"
+      data-repo-id="R_kgDOOO7-dA"
+      data-category="ddblog"
+      data-category-id="DIC_kwDOOO7-dM4CoeLB"
+      data-mapping={`/posts/${path}/`}
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-CN"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async>
+    </script>
+</div>
+
+<style>
+  .giscus {
+    padding-bottom: var(--small-gap);
+  }
+</style>

@@ -1,0 +1,6 @@
+https://yunate.cn/posts/what-is-com/what-is-COM
+https://yunate.cn/posts/how-to-use-git/how-to-use-git
+https://yunate.cn/posts/iocp/what-is-iocp
+https://yunate.cn/posts/self-signed-certificate/self-signed-certificate
+https://yunate.cn/posts/cpp-croutine/cpp-croutine
+https://yunate.cn/posts/How-to-sign-a-file/How-to-sign-a-file

@@ -1,0 +1,8 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { errorString } = Astro.props;
+
+---
+<BaseLayout title='error'>
+  <h1>{ errorString }</h1>
+</BaseLayout>

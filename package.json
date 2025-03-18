@@ -1,0 +1,22 @@
+{
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "prebuild": "tsx generate-search-index.ts",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.3.0",
+    "astro": "^5.5.3",
+    "fast-glob": "^3.3.3",
+    "gray-matter": "^4.0.3",
+    "rehype-pretty-code": "^0.14.1"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.3"
+  }
+}

@@ -1,0 +1,142 @@
+pre {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%) !important;
+  padding: 1.5em !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', Consolas, monospace !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  color: #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+  margin: 1.5em 0 !important;
+}
+
+.code-block-container pre {
+  background: transparent !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+html[data-theme="dark"] pre {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(148, 163, 184, 0.1) !important;
+}
+
+code {
+  counter-reset: line;
+  display: block !important;
+  overflow-x: auto !important;
+  border-radius: 8px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent !important;
+}
+
+h3 > code,
+strong > code,
+em > code,
+li > code,
+p > code {
+  display: inline !important;
+  font-family: inherit !important;
+  white-space: normal;
+  word-break: break-word;
+
+  background-color: rgba(229, 62, 62, 0.08) !important;
+  font-size: 0.92em !important;
+  padding: 0em 0.2em !important;
+  margin: 0 0.2em !important;
+
+  border-radius: 4px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+h3 > code:hover,
+strong > code:hover,
+em > code:hover,
+li > code:hover,
+p > code:hover {
+  background-color: rgba(229, 62, 62, 0.24) !important;
+}
+
+code::-webkit-scrollbar {
+  height: 8px !important;
+}
+
+code::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 4px !important;
+}
+
+code::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 4px !important;
+  transition: background 0.3s ease !important;
+}
+
+code::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+code > span {
+  display: inline-block;
+  counter-increment: line;
+  width: 100% !important;
+  min-height: 1.6em !important;
+  transition: background-color 0.2s ease !important;
+}
+
+code > span:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+code > span::before {
+  content: counter(line);
+  display: inline-block;
+  width: 3em !important;
+  margin-right: 1.5em !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  text-align: right !important;
+  font-weight: 400 !important;
+  user-select: none !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding-right: 1em !important;
+  margin-right: 1em !important;
+}
+
+html[data-theme="dark"] pre code > span::before {
+  color: rgba(148, 163, 184, 0.5) !important;
+  border-right: 1px solid rgba(148, 163, 184, 0.1) !important;
+}
+
+code .token.comment {
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-style: italic !important;
+}
+
+code .token.string {
+  color: #a3e635 !important;
+}
+
+code .token.number {
+  color: #fbbf24 !important;
+}
+
+code .token.keyword {
+  color: #8b5cf6 !important;
+  font-weight: 600 !important;
+}
+
+code .token.function {
+  color: #60a5fa !important;
+}
+
+code .token.operator {
+  color: #f472b6 !important;
+}
