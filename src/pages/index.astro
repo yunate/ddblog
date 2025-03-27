@@ -47,57 +47,8 @@ const tags = await getAllTags();
 ---
 <BaseLayout>
   <div class="container">
-    <div class="left">
-      {groupedPosts.map(({ newKey, sortedPosts }) => (
-        <PostMenuList title={newKey} posts={sortedPosts} />
-      ))}
-    </div>
-
-    <div class="right">
-      {tags.length > 0 &&
-        <div class="tag-container">
-          <div class="lable">标签云</div>
-          <TagCloud tags={tags} />
-        </div>
-      }
-    </div>
+    {groupedPosts.map(({ newKey, sortedPosts }) => (
+      <PostMenuList title={newKey} posts={sortedPosts} />
+    ))}
   </div>
 </BaseLayout>
-
-<style>
-  .container {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .left {
-    flex: 1;
-  }
-
-  .right {
-    margin-top: var(--small-gap);
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .tag-container{
-    padding-left: calc(var(--small-gap) * 2);
-  }
-
-  .tag-container .lable {
-    font: bold 18px/2rem system-ui;
-    color: var(--text-color-hover);
-  }
-
-  @media (max-width: 768px) {
-  .right {
-    display: none;
-  }
-
-  .left {
-    width: 100%;
-    margin-right: 0px;
-  }
-
-</style>

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.3.0",
-    "astro": "^5.5.3"
+    "astro": "^5.5.3",
+    "rehype-pretty-code": "^0.14.1"
   }
 }
