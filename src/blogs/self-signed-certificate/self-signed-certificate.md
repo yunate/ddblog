@@ -28,7 +28,7 @@ Windows 有一个本地的「受信任根证书颁发机构」存储区（Truste
 
 ### 如何制作一个自签名文件?
 我们使用OpenSSL来生成证书, 所以要先安装OpenSSL, 然后使用以下脚本(bat脚本):
-```bash
+```bat
 :: openssl.exe所在路径
 SET openssl_rootpath="C:\Program Files\OpenSSL-Win64\bin"
 

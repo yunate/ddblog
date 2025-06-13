@@ -23,7 +23,7 @@ export async function getAllPosts(): Promise<BlogPostEntry[]> {
 
   return entrys.sort((a, b) => {
     let l = a.postInfo.pubDate?.getDate() ?? 0;
-    let r = b.postInfo.pubDate?.getDate() ?? 0; // 修正这里的变量名，原来是 a，应该是 b
+    let r = b.postInfo.pubDate?.getDate() ?? 0;
     return l - r;
   });
 }

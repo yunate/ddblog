@@ -7,7 +7,7 @@ tags: [
 ]
 ---
 ### alias
-```bash
+```bat
 git config --global alias.ci "commit"
 git config --global alias.st "status"
 git config --global alias.co "checkout"
@@ -18,7 +18,7 @@ git config --global alias.ll "log --pretty=format:'%C(blue)%h%Creset %C(cyan)%<(
 ```
 
 ### 格式化日志
-```bash
+```bat
 git config --global alias.ll "log --pretty=format:'%C(blue)%h%Creset %C(cyan)%<(26,trunc)%cd%x08%x08%Creset %C(red)%<(13,trunc)%ar%Creset %C(magenta)%an%Creset : %C(green)%s%Creset'"
 ```
 结果如图:
@@ -26,13 +26,13 @@ git config --global alias.ll "log --pretty=format:'%C(blue)%h%Creset %C(cyan)%<(
 ![git ll](./git-log.png)
 
 ### 强制更新节点到远程，忽略本地所有修改：
-```bash
+```bat
 git fetch --all
 git reset --hard origin/master
 ```
 
 ### 合并不同仓库：
-```
+```bat
 将B库（地址b_url）合并到A库（a_url）
 1、创建文件夹，并且进入文件夹
 2、 git init                    // 初始化一个git工作区间

@@ -14,7 +14,7 @@ tags: [
 1. 首先需要准备一个证书: [如何制作一个自签名证书(根证书)](/posts/self-signed-certificate/self-signed-certificate/)
 2. 以管理员权限打开CMD, 运行以下命令:
 
-```bash
+```bat
 "signtool.exe" sign /f "你的证书.pfx" /p 证书密码 /fd sha256 /tr http://timestamp.digicert.com /td sha256 "你的文件"
 ```
 

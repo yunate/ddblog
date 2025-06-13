@@ -3,8 +3,6 @@ import '../styles/global.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostMenuList from '../components/PostMenuList.astro';
 import { getAllPosts } from '../Utils.ts';
-import TagCloud from '../components/TagCloud.astro';
-import { getAllTags } from '../Utils';
 import type { BlogPostEntry } from '../Utils.ts';
 
 const allPosts = await getAllPosts();
@@ -43,7 +41,6 @@ const groupedPosts = function getGroupedPosts() {
   return return_value;
 }();
 
-const tags = await getAllTags();
 ---
 <BaseLayout>
   <div class="container">
