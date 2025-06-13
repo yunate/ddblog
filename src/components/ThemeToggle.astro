@@ -50,20 +50,14 @@
     }
     return 'light';
   })();
+
   if (theme === 'light') {
     document.documentElement.classList.remove('dark');
+    document.documentElement.setAttribute('data-theme', 'light');
   } else {
     document.documentElement.classList.add('dark');
+    document.documentElement.setAttribute('data-theme', 'dark');
   }
-
-  // Toggle the dark class on the pre element if it has a data-theme attribute
-  document.querySelectorAll('pre').forEach(pre => {
-    if (theme === 'light') {
-      pre.classList.remove("dark");
-    } else {
-      pre.classList.add("dark");
-    }
-  });
 
   window.localStorage.setItem('theme', theme!);
 
@@ -72,16 +66,7 @@
 
     // Toggle the dark class on the document element
     document.documentElement.classList.toggle('dark');
-
-    // Toggle the dark class on the pre element if it has a data-theme attribute
-    document.querySelectorAll('pre').forEach(pre => {
-      if (isDark) {
-        pre.classList.remove("dark");
-      } else {
-        pre.classList.add("dark");
-      }
-    });
-
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
     localStorage.setItem("theme", !isDark ? "dark" : "light");
   }
 

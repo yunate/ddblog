@@ -7,7 +7,7 @@ tags: [
 ]
 ---
 ### 什么是COM?
-COM 可以简单理解为一个clsid(例如`{CED40584-ADF4-4CEF-A168-42AF852BB5C4}`), 这个clsid和一个dll绑定, `绑定信息记录在注册表中: clsid <--> dll path`, 这样client代码可以通过这个clsid来调用这个dll的接口.
+COM 可以简单理解为一个clsid(例如`{CED40584-ADF4-4CEF-A168-42AF852BB5C4}`), 这个clsid和一个dll绑定, 绑定信息记录在注册表中: `clsid <--> dll path`, 这样client代码可以通过这个clsid来调用这个dll的接口.
 一个dll可以和多个clsid绑定. 但一个clsid对应一个dll.
 
 ### 如何开发一个COM?

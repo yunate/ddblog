@@ -18,12 +18,31 @@ import * as globals from '../../globals.js';
 <!-- 网站分析 -->
 <script data-goatcounter="https://yunate.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
+<!-- baidu -->
+<script>
+  (function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    if (s && s.parentNode) {
+      s.parentNode.insertBefore(bp, s);
+    }
+  })();
+</script>
+<meta name="baidu-site-verification" content="codeva-3do21bE7An" />
+
 <!-- Security -->
 <meta http-equiv="Content-Security-Policy" content="
     default-src
       'self'
       'unsafe-inline';
     script-src-elem
+      https://zz.bdstatic.com
       https://cdn.skypack.dev
       https://www.googletagmanager.com
       https://pagead2.googlesyndication.com/
@@ -42,6 +61,10 @@ import * as globals from '../../globals.js';
       'self';
     style-src
       https://giscus.app/
+      'unsafe-inline'
+      'self';
+    img-src
+      https://sp0.baidu.com
       'unsafe-inline'
       'self';
 ">

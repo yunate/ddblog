@@ -2,7 +2,7 @@
 export const blogsPath = './src/blogs';
 
 export const blogTitle = 'yunate';
-export const siteUrl = 'https://URL_ADDRESS';
+export const siteUrl = 'https://yunate.cn';
 export const blogName = 'yunate';
 export const description = "yunate's blog";
 export const githubUrl = 'https://github.com/yunate';
