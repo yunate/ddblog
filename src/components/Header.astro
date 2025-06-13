@@ -13,7 +13,6 @@ import TextLink from './TextLink.astro';
     <HamburgerMenu />
     <ul>
       <li><TextLink text="标签" url="/tags" /></li>
-      <!-- <li><TextLink text="搜索" url="/" /></li> -->
       <li>
         <TextLink openInNewTab url={globals.githubUrl}>
           <svg fill="currentColor" viewBox="0 0 24 24" width="24" height="24" >
@@ -22,6 +21,15 @@ import TextLink from './TextLink.astro';
         </TextLink>
       </li>
       <li><div><ThemeToggle /></div></li>
+
+      <li>
+        <TextLink url="/search" title="搜索">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+        </TextLink>
+      </li>
     </ul>
   </nav>
 </header>

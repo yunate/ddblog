@@ -1,6 +1,8 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from 'astro:content';
 import type { PostInfo } from './content.config.ts';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 export interface BlogPostEntry{
   id: string;
@@ -49,4 +51,23 @@ export async function getAllTags(): Promise<TagInfo[]> {
     });
   });
   return Array.from(tags.values()).sort((a, b) => b.posts.length - a.posts.length);
+}
+
+export async function generateSearchIndex(): Promise<void> {
+  console.log('\n===========Generating search index...===========');
+  try {
+    const posts = await getAllPosts();
+    const index = posts.map(post => ({
+      title: post.postInfo.title,
+      url: `/posts/${post.id}/`,
+      body: post.body || '',
+      tags: post.postInfo.tags || [],
+    }));
+
+    const outputPath = path.join(process.cwd(), 'dist/search-index.json');
+    console.log('\n===========Writing search index to:===========', outputPath);
+    await fs.writeFile(outputPath, JSON.stringify(index, null, 2));
+  } catch (error) {
+    console.error('\n===========Error generating search index:===========', error);
+  }
 }
